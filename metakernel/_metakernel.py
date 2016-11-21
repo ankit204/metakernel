@@ -617,9 +617,9 @@ class MetaKernel(Kernel):
         self.log.debug('Error: %s' % message)
         stream_content = {
             'name': 'stderr',
-            'text': RED + message + NORMAL
+            'traceback': RED + message + NORMAL
         }
-        self.send_response(self.iopub_socket, 'stream', stream_content)
+        self.send_response(self.iopub_socket, 'error', stream_content)
 
     def call_magic(self, line):
         """
